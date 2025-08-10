@@ -1,4 +1,4 @@
-package org.poweredbyniks.part0;
+package org.poweredbyniks.part1;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
@@ -72,6 +72,11 @@ class SimpleSubscriber implements Subscriber<Integer> {
 
         // Once we've processed 2 items, request 2 more
         if (itemsProcessed % 2 == 0) {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             subscription.request(2);
         }
     }
